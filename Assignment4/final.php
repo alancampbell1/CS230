@@ -1,25 +1,29 @@
-<?php session_start(); 
-
-//$_SESSION['name']
-//$json_data = json_encode($_SESSION['name']);
-//file_put_contents('myfile.json', $json_data);
-
+<?php session_start();
 
 /*
- * TODO: Update the JSON file with the new score according to user name
+ * This PHP file is the results page for the English quiz. The user is told their  score and if they beat their overall top stored in the JSON file.
+ * If they beat their top score they can save this to the JSON file and return the index page or try again where their score will be reset to zero.
  */
+
 
 	//Current user name variable
 	$_SESSION["OverallUser"];
 	//Users old score
 	$_SESSION['userScore'];
 
+	$_SESSION['reachedEnd'] = 1;
+
+
+	//Connects to the JSON file located in the same folder in htdocs. The JSON file stores usernames and top scores
 	$str = file_get_contents('data.js');
 	$json = json_decode($str, true);
-	//$myFile = "data.js";
-	//$arr_data = array();
 
 	$increment = 0;
+
+	/*
+  	 * This while loop and if statement finds the username signed in, checks to see if their current score beats their top score and if so,
+  	 * saves their new top to the JSON file.
+	 */
 
 	while(true){
 		if($json[$increment]['Username'] == $_SESSION['OverallUser']){
@@ -30,8 +34,6 @@
 					$json[$increment]['Score'] = $_SESSION['score'];
 					$newJsonString = json_encode($json);
 					file_put_contents('data.js', $newJsonString);
-
-
 					break;
 			}
 			else {
@@ -63,6 +65,8 @@
 				<p>Final Score: <?php echo $_SESSION['score']; ?></p>
 				<a href="question.php?n=1" class="start">Try Again</a>
 				<a href="index.php" class="start">Submit and Exit</a>
+
+				
 		</div>
 	</main>
 	<footer>
@@ -70,5 +74,31 @@
 			Copyright &copy; 2018, Alan Campbell (10346239) & yogacards.com
 		</div>
 	</footer>
+		<div align="center">
+			<?php
+				/*
+				 * This section reads in the results JSON file and prints out the results, either Correct or Incorrect set in the process.php file
+				 * and prints the results to the screen
+				 */
+
+				$string = file_get_contents('results.js');
+				$json_a = json_decode($string, true);
+				$elementCount  = count($json_a);
+				echo '<br>';
+				echo 'The following is a breakdown of your results:';
+				echo '<br>';
+				echo 'Question 1: ';
+				echo $json_a[0]['Question Result:']; echo '<br>';
+				echo 'Question 2: ';
+				echo $json_a[1]['Question Result:']; echo '<br>';
+				echo 'Question 3: ';
+				echo $json_a[2]['Question Result:']; echo '<br>';
+				echo 'Question 4: ';
+				echo $json_a[3]['Question Result:']; echo '<br>';
+				echo 'Question 5: ';
+				echo $json_a[4]['Question Result:']; echo '<br>';
+			?>
+		</div>
+
 </body>
 </html>

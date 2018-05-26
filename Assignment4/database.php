@@ -1,7 +1,10 @@
 <?php
 
-//Create connection credentials
+/*
+	This PHP file connects to the Database for the questions and answers to be pulled into the PHP files
+*/
 
+//Create connection
 $db_host = 'localhost';
 $db_name = 'CS230_Quiz';
 $db_user = 'root';

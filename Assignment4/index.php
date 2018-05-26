@@ -1,13 +1,14 @@
-<?php session_start(); ?>
+<?php session_start(); 
 
-<!--
+$_SESSION['wrongAnswer'] = 0;
 
-TODO: Randomise the questions and the yoga cards 
-	  Style the pages
-	  Get working on local XAMPP
-	  Comment everything
+if($_SESSION['wrongAnswer'] == 1){
+	echo "User does not exist. Please try again.";
+	$_SESSION['wrongAnswer'] = 0;
+}
 
--->
+
+?>
 
 <!DOCTYPE html>
 <html>
@@ -29,20 +30,18 @@ TODO: Randomise the questions and the yoga cards
 	</div>
 
 	<div align="center">
-	<br>
-	<h2>Existing User: </h2>
-	<form action="homepage.php" method="post">
-		Name: <input type="text" name="ExistingName"><br>
-		<input type="submit">
-	</form>
+		<br>
+		<h2>Existing User: </h2>
+		<form action="homepage.php" method="post">
+			Name: <input type="text" name="ExistingName"><br>
+			<input type="submit">
+		</form>
 
-	<h2>New User: </h2>
-	<form action="homepage.php" method="post">
-		Name: <input type="text" name="NewName"><br>
-		<input type="submit">
-	</form>
-
-
+		<h2>New User: </h2>
+		<form action="homepage.php" method="post">
+			Name: <input type="text" name="NewName"><br>
+			<input type="submit">
+		</form>
 	</div>
 
 	<footer>

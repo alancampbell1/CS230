@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+<p>Try to change the names.</p>
+
+<div ng-app="myApp" ng-controller="myCtrl">						<!-- Module defined and controller defined and called -->
+	First Name: <input type="text" ng-model="firstName"><br>
+	Last Name: <input type="text" ng-model="lastName"><br>
+	<br>
+	Full Name: {{firstName + " " + lastName}}					<!-- Changes the values depending on the user input -->
+</div>
+
+<script>
+	var app = angular.module('myApp', []);				//Stores the module in variable app
+	app.controller('myCtrl', function($scope) {			//calls the controller and a function to get access to variables
+    	$scope.firstName= "John";						//that are within myCtrl
+    	$scope.lastName= "Doe";							//assigns then predetermined values
+	});
+</script>
+
+
+<!-- 
+Remember:
+ - The module (ng-app) defines the application
+ - The controller (ng-controller) controls the application
+-->
+
+</body>
+</html>

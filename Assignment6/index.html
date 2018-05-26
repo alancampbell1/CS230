@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="functions.js"></script>
+<link rel="stylesheet" href="style.css">
+<body>
+
+<div align="center">
+
+<div ng-app="myApp" ng-controller="customersCtrl"> 
+
+<h2>Assignment 6</h2>
+<h3>Name: Alan Campbell</h3>
+<h3>Student Number: 10346239</h3>
+
+<p>The code used in this assignment was sourced from W3Schools.</p>
+<p>The following table is a direct pull from the PHP Admin Database:</p>
+<table>
+  <tr ng-repeat="x in names">
+    <td>{{ x.name }}</td>
+    <td>{{ x.country }}</td>
+  </tr>
+</table>
+<br>
+<p>The following table is ordered by Country:</p>
+<br>
+<table>
+  <tr ng-repeat="x in names | orderBy : 'country'">
+    <td>{{ x.name }}</td>
+    <td>{{ x.country }}</td>
+  </tr>
+</table>
+<br>
+<p>The following table displays the Country in UPPERCASE:</p>
+<br>
+<table>
+  <tr ng-repeat="x in names">
+    <td>{{ x.name }}</td>
+    <td>{{ x.country | uppercase }}</td>
+  </tr>
+</table>
+<br>
+<p>The following table adds an index</p>
+<br>
+<table>
+  <tr ng-repeat="x in names">
+    <td>{{ $index + 1 }}</td>
+    <td>{{ x.name }}</td>
+    <td>{{ x.country }}</td>
+  </tr>
+</table>
+<br>
+<p>The following table changes the CSS</p>
+<br>
+<table>
+<tr ng-repeat="x in names">
+<td ng-if="$odd" style="background-color:#FFA500">{{ x.name }}</td>
+<td ng-if="$even" style="background-color:#FFB6C1">{{ x.name }}</td>
+<td ng-if="$odd" style="background-color:#FFB6C1">{{ x.country }}</td>
+<td ng-if="$even" style="background-color:#FFA500">{{ x.country }}</td>
+</tr>
+</table>
+</div>
+</div>
+
+</body>
+</html>

@@ -1,9 +1,6 @@
  <?php
 
-/*
- * Name: Alan Campbell
- * Student No: 10346239
- */
+
 
 $servername = "localhost";
 $username = "root";

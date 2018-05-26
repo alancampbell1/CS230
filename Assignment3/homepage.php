@@ -1,9 +1,6 @@
 <?php
 
-/*
- * Name: Alan Campbell
- * Student No: 10346239
- */
+
 
 echo '<h1>This is Assignment 3</h1>';
 // php populate html table from mysql database
